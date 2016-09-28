@@ -1,7 +1,8 @@
 -- TipoQuarto (#idTipoQuarto, preco)
 CREATE TABLE TipoQuarto
 (
-	idTipoQuarto int,
+	idTipoQuarto serial,
+	nome varchar(16),
 	preco real,
 	PRIMARY KEY (idTipoQuarto)
 );
@@ -9,9 +10,9 @@ CREATE TABLE TipoQuarto
 -- Hotel (#idHotel, nome, endereco, telefone)
 CREATE TABLE Hotel
 (
-	idHotel int,
+	idHotel serial,
 	nome varchar(20),
-	endereco varchar(20),
+	endereco varchar(40),
 	telefone varchar(12),
 	PRIMARY KEY (idHotel)
 );
@@ -19,7 +20,7 @@ CREATE TABLE Hotel
 -- Cliente (#idCliente, nome, endereco, telefone)
 CREATE TABLE Cliente
 (
-	idCliente int,
+	idCliente serial,
 	nome varchar(20),
 	endereco varchar(20),
 	telefone varchar(12),
@@ -29,7 +30,7 @@ CREATE TABLE Cliente
 -- Empregado (#idEmpregado, nome)
 CREATE TABLE Empregado
 (
-	idEmpregado int,
+	idEmpregado serial,
 	nome varchar(20),
 	PRIMARY KEY (idEmpregado)
 );
@@ -37,14 +38,14 @@ CREATE TABLE Empregado
 -- TipoServico (#idTipoServico, custo)
 CREATE TABLE TipoServico
 (
-	idTipoServico int,
+	idTipoServico serial,
 	custo real,
 	PRIMARY KEY (idTipoServico)
 );
 -- Quarto (#numQuarto, localizacao, &idTipoQuarto, #&idHotel)
 CREATE TABLE Quarto
 (
-	numQuarto int,
+	numQuarto serial,
 	idHotel int,
 	idTipoQuarto int,
 	andar int,
@@ -90,7 +91,7 @@ CREATE TABLE Estadia
 -- Servico (#idServico, &idTipoServico, &idCliente, &numQuarto, &idHotel, &dataCheckIn, data, hora)
 CREATE TABLE Servico
 (
-	idServico int,
+	idServico serial,
 	idTipoServico int,
 	idCliente int,
 	numQuarto int,

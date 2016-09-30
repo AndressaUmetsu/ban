@@ -1,4 +1,4 @@
--- TipoQuarto (#idTipoQuarto, preco)
+-- TipoQuarto (#idTipoQuarto, preco, nome)
 CREATE TABLE TipoQuarto
 (
 	idTipoQuarto serial,
@@ -35,10 +35,11 @@ CREATE TABLE Empregado
 	PRIMARY KEY (idEmpregado)
 );
 
--- TipoServico (#idTipoServico, custo)
+-- TipoServico (#idTipoServico, custo, nome)
 CREATE TABLE TipoServico
 (
 	idTipoServico serial,
+	nome varchar(16),
 	custo real,
 	PRIMARY KEY (idTipoServico)
 );

@@ -27,9 +27,10 @@ CREATE OR REPLACE FUNCTION verificaQuartoTemEstadia() RETURNS trigger AS
 $$
 BEGIN
 	--idCliente, #&numQuarto, #&idHotel, #dataCheckIn
-	-- IF NOT (SELECT 1 FROM estadia e WHERE blalbalblablalblalbalbal) THEN
-	-- 	RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
-	-- END IF;
+	-- NÃO ESTÁ COMPLETO, FALTA COISA NO JOIN
+	IF NOT (SELECT 1 FROM estadia e JOIN servico s ON (e.numQuarto = s.numQuarto)) THEN
+		RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
+	END IF;
 	RETURN new;
 END;
 $$

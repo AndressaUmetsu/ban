@@ -1,15 +1,42 @@
--- adicionar uma estadia apenas para quartos livres
--- adicionar uma reserva apenas para quartos livres
 -- serviço só pode ser pedido por quartos que possuem estadia
 -- quarto adicionado deve ser de um hotel existente
 -- estadia deve estar relacionado com um quarto existente
 
+-- Reserva
 
-CREATE OR REPLACE FUNCTION verificaQuartoLivre() RETURNS trigger AS
+CREATE OR REPLACE FUNCTION verificaQuartoLivre_Reserva() RETURNS trigger AS
 $$
+	DECLARE VidCliente INT;
 	BEGIN
 		IF (SELECT 1 FROM estadia e WHERE e.numQuarto = new.numQuarto AND new.dataCheckIn BETWEEN e.dataCheckIn AND e.dataCheckOut) THEN
 			RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
+		ELSE 
+			IF (SELECT 1 FROM reserva r WHERE r.numQuarto = new.numQuarto AND new.dataCheckIn BETWEEN r.dataCheckIn AND r.dataCheckOut) THEN
+				RAISE EXCEPTION 'Já existe uma reserva nesse quarto';
+			END IF;
+		END IF;
+		RETURN new;
+	END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER QuartoParaReserva
+BEFORE INSERT OR UPDATE ON reserva
+FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Reserva();
+
+-- Estadia
+
+CREATE OR REPLACE FUNCTION verificaQuartoLivre_Estadia() RETURNS trigger AS
+$$
+	DECLARE VidCliente INT;
+	BEGIN
+		IF (SELECT 1 FROM estadia e WHERE e.numQuarto = new.numQuarto AND new.dataCheckIn BETWEEN e.dataCheckIn AND e.dataCheckOut) THEN
+			RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
+		ELSE 
+			SELECT r.idCliente INTO VidCliente FROM reserva r WHERE r.numQuarto = new.numQuarto AND r.dataCheckIn = new.dataCheckIn;
+			IF (VidCliente != new.idCliente) THEN
+				RAISE EXCEPTION 'Quarto reservado para outro cliente';
+			END IF;
 		END IF;
 		RETURN new;
 	END;
@@ -18,10 +45,9 @@ LANGUAGE plpgsql;
 
 CREATE TRIGGER QuartoParaEstadia
 BEFORE INSERT OR UPDATE ON estadia
-FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre();
-CREATE TRIGGER QuartoParaReserva
-BEFORE INSERT OR UPDATE ON reserva
-FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre();
+FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Estadia();
+
+
 
 CREATE OR REPLACE FUNCTION verificaQuartoTemEstadia() RETURNS trigger AS
 $$
@@ -39,3 +65,8 @@ LANGUAGE plpgsql;
 CREATE TRIGGER ServicoVerificaQuartoEstadia
 BEFORE INSERT OR UPDATE ON servico
 FOR EACH ROW EXECUTE PROCEDURE verificaQuartoTemEstadia();
+
+
+
+
+

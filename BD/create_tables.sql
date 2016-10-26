@@ -43,6 +43,7 @@ CREATE TABLE TipoServico
 	custo real,
 	PRIMARY KEY (idTipoServico)
 );
+
 -- Quarto (#numQuarto, localizacao, &idTipoQuarto, #&idHotel)
 CREATE TABLE Quarto
 (
@@ -74,7 +75,7 @@ CREATE TABLE Limpeza
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- Estadia (#&idCliente, #&numQuarto, #&idHotel, #dataCheckIn, dataCheckOut)
+-- Estadia (&idCliente, #&numQuarto, #&idHotel, #dataCheckIn, dataCheckOut)
 CREATE TABLE Estadia
 (
 	idCliente int,
@@ -89,7 +90,7 @@ CREATE TABLE Estadia
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- Servico (#idServico, &idTipoServico, &idCliente, &numQuarto, &idHotel, &dataCheckIn, data, hora)
+-- Servico (idServico, &idTipoServico, &idCliente, &numQuarto, &idHotel, &dataCheckIn, data, hora)
 CREATE TABLE Servico
 (
 	idServico serial,
@@ -107,7 +108,7 @@ CREATE TABLE Servico
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );
 
--- Reserva (#&idCliente, #&numQuarto, #&idHotel, #dataReserva, dataCheckIn, dataCheckOut, valorEntrada)
+-- Reserva (&idCliente, #&numQuarto, #&idHotel, #dataReserva, dataCheckIn, dataCheckOut, valorEntrada )
 CREATE TABLE Reserva
 (
 	idCliente int,

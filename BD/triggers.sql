@@ -48,7 +48,6 @@ BEFORE INSERT OR UPDATE ON estadia
 FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Estadia();
 
 
-
 CREATE OR REPLACE FUNCTION verificaQuartoTemEstadia() RETURNS trigger AS
 $$
 BEGIN
@@ -66,7 +65,22 @@ CREATE TRIGGER ServicoVerificaQuartoEstadia
 BEFORE INSERT OR UPDATE ON servico
 FOR EACH ROW EXECUTE PROCEDURE verificaQuartoTemEstadia();
 
+-- IdQuarto sequencial
 
+CREATE OR REPLACE FUNCTION numSequencial() RETURNS trigger AS
+$$
+	DECLARE maximo INT;
+	BEGIN
+		SELECT MAX(q.numQuarto) INTO maximo FROM quarto q WHERE q.idHotel = new.idHotel;
+		maximo := maximo + 1;
+		new.numQuarto := maximo;
+		RETURN new;
+	END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER GerarNumQuarto BEFORE INSERT ON quarto
+FOR EACH ROW EXECUTE PROCEDURE numSequencial();
 
 
 

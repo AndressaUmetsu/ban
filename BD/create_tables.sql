@@ -47,7 +47,7 @@ CREATE TABLE TipoServico
 -- Quarto (#numQuarto, localizacao, &idTipoQuarto, #&idHotel)
 CREATE TABLE Quarto
 (
-	numQuarto serial,
+	numQuarto int,
 	idHotel int,
 	idTipoQuarto int,
 	andar int,

@@ -1,7 +1,3 @@
--- serviço só pode ser pedido por quartos que possuem estadia
--- quarto adicionado deve ser de um hotel existente
--- estadia deve estar relacionado com um quarto existente
-
 -- Reserva
 
 CREATE OR REPLACE FUNCTION verificaQuartoLivre_Reserva() RETURNS trigger AS
@@ -47,6 +43,8 @@ CREATE TRIGGER QuartoParaEstadia
 BEFORE INSERT OR UPDATE ON estadia
 FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Estadia();
 
+
+-- Verificar se o text pode ser convertido para numeric
 CREATE OR REPLACE FUNCTION verificaNumero(text) RETURNS BOOLEAN AS
 $$
 	DECLARE x NUMERIC;

@@ -24,7 +24,10 @@ INSERT INTO Empregado (nome) VALUES
 	('Sen'),
 	('Lin');
 
--- INSERT INTO TipoServico (nome, custo) VALUES
+INSERT INTO TipoServico (nome, custo) VALUES
+	('Malabarista', 100),
+	('Exorcista', 1000),
+	('Waifu', 250);
 
 -- numQuarto ser serial, irá criar a situação em que numero do quarto do hotel 2 comece em 3
 INSERT INTO Quarto (numQuarto, idHotel, idTipoQuarto, andar) VALUES
@@ -44,7 +47,8 @@ INSERT INTO Quarto (numQuarto, idHotel, idTipoQuarto, andar) VALUES
 INSERT INTO Estadia (idCliente, numQuarto, idHotel, dataCheckIn, dataCheckOut) VALUES
 	(1, 1, 1, '10/12/2016', '10/16/2016');
 
--- INSERT INTO Servico (idTipoServico, idCliente, numQuarto, idHotel, dataCheckIn, data, hora) VALUES
+INSERT INTO Servico (idTipoServico, idCliente, numQuarto, idHotel, dataCheckIn, data, hora) VALUES
+	(1, 1, 1, 1, '10/12/2016', '10/13/2016', '10:10');
 
 -- Quando faço reserva de um quarto precisa de tipo de quarto
 -- INSERT INTO Reserva (idCliente, numQuarto, idHotel, dataReserva, dataCheckIn, dataCheckOut, valorEntrada) VALUES

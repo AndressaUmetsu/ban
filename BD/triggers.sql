@@ -47,23 +47,41 @@ CREATE TRIGGER QuartoParaEstadia
 BEFORE INSERT OR UPDATE ON estadia
 FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Estadia();
 
-
-CREATE OR REPLACE FUNCTION verificaQuartoDeServicoTemEstadia() RETURNS trigger AS
+CREATE OR REPLACE FUNCTION verificaNumero(text) RETURNS BOOLEAN AS
 $$
+	DECLARE x NUMERIC;
 	BEGIN
-		--idCliente, #&numQuarto, #&idHotel, #dataCheckIn
-		-- NÃO ESTÁ COMPLETO, FALTA COISA NO JOIN
-		IF NOT (SELECT 1 FROM estadia e JOIN servico s ON (e.numQuarto = s.numQuarto)) THEN
-			RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
+		x = $1::NUMERIC;
+		RETURN TRUE;
+		EXCEPTION WHEN others THEN
+		RETURN FALSE;
+	END;
+$$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION validaTelefone() RETURNS trigger AS
+$$
+	DECLARE telefone text;
+	BEGIN
+		telefone = new.telefone;
+		IF NOT verificaNumero(telefone) THEN
+			RAISE EXCEPTION 'Telefone inválido, não é composto de somente números.';
+		END IF;
+		IF length(telefone) < 8 THEN
+			RAISE EXCEPTION 'Telefone muito curto.';
 		END IF;
 		RETURN new;
 	END;
 $$
 LANGUAGE plpgsql;
 
-CREATE TRIGGER ServicoVerificaQuartoEstadia
-BEFORE INSERT OR UPDATE ON servico
-FOR EACH ROW EXECUTE PROCEDURE verificaQuartoTemEstadia();
+CREATE TRIGGER ValidaTelefoneCliente
+BEFORE INSERT OR UPDATE ON cliente
+FOR EACH ROW EXECUTE PROCEDURE validaTelefone();
+
+CREATE TRIGGER ValidaTelefoneHotel
+BEFORE INSERT OR UPDATE ON hotel
+FOR EACH ROW EXECUTE PROCEDURE validaTelefone();
 
 -- IdQuarto sequencial
 

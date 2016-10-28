@@ -48,7 +48,7 @@ BEFORE INSERT OR UPDATE ON estadia
 FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Estadia();
 
 
-CREATE OR REPLACE FUNCTION verificaQuartoTemEstadia() RETURNS trigger AS
+CREATE OR REPLACE FUNCTION verificaQuartoDeServicoTemEstadia() RETURNS trigger AS
 $$
 	BEGIN
 		--idCliente, #&numQuarto, #&idHotel, #dataCheckIn

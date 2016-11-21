@@ -1,5 +1,5 @@
 -- TipoQuarto (#idTipoQuarto, preco, nome)
-CREATE TABLE TipoQuarto
+CREATE TABLE TipoQuartos
 (
 	idTipoQuarto serial,
 	nome varchar(16),
@@ -8,7 +8,7 @@ CREATE TABLE TipoQuarto
 );
 
 -- Hotel (#idHotel, nome, endereco, telefone)
-CREATE TABLE Hotel
+CREATE TABLE Hotels
 (
 	idHotel serial,
 	nome varchar(20),
@@ -18,7 +18,7 @@ CREATE TABLE Hotel
 );
 
 -- Cliente (#idCliente, nome, endereco, telefone)
-CREATE TABLE Cliente
+CREATE TABLE Clientes
 (
 	idCliente serial,
 	nome varchar(20),
@@ -28,7 +28,7 @@ CREATE TABLE Cliente
 );
 
 -- Empregado (#idEmpregado, nome)
-CREATE TABLE Empregado
+CREATE TABLE Empregados
 (
 	idEmpregado serial,
 	nome varchar(20),
@@ -36,7 +36,7 @@ CREATE TABLE Empregado
 );
 
 -- TipoServico (#idTipoServico, custo, nome)
-CREATE TABLE TipoServico
+CREATE TABLE TipoServicos
 (
 	idTipoServico serial,
 	nome varchar(16),
@@ -45,7 +45,7 @@ CREATE TABLE TipoServico
 );
 
 -- Quarto (#numQuarto, localizacao, &idTipoQuarto, #&idHotel)
-CREATE TABLE Quarto
+CREATE TABLE Quartos
 (
 	numQuarto int,
 	idHotel int,
@@ -59,7 +59,7 @@ CREATE TABLE Quarto
 );
 
 -- Limpeza (#&numQuarto, #&idHotel, #data, #hora, &idEmpregado)
-CREATE TABLE Limpeza
+CREATE TABLE Limpezas
 (
 	numQuarto int,
 	idHotel int,
@@ -76,7 +76,7 @@ CREATE TABLE Limpeza
 );
 
 -- Estadia (&idCliente, #&numQuarto, #&idHotel, #dataCheckIn, dataCheckOut)
-CREATE TABLE Estadia
+CREATE TABLE Estadias
 (
 	idCliente int,
 	numQuarto int,
@@ -91,7 +91,7 @@ CREATE TABLE Estadia
 );
 
 -- Servico (idServico, &idTipoServico, &idCliente, &numQuarto, &idHotel, &dataCheckIn, data, hora)
-CREATE TABLE Servico
+CREATE TABLE Servicos
 (
 	idServico serial,
 	idTipoServico int,
@@ -109,7 +109,7 @@ CREATE TABLE Servico
 );
 
 -- Reserva (&idCliente, #&numQuarto, #&idHotel, #dataReserva, dataCheckIn, dataCheckOut, valorEntrada )
-CREATE TABLE Reserva
+CREATE TABLE Reservas
 (
 	idCliente int,
 	numQuarto int,

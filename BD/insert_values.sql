@@ -31,8 +31,8 @@ INSERT INTO TipoServicos (nome, custo) VALUES
 
 -- numQuarto ser serial, irá criar a situação em que numero do quarto do hotel 2 comece em 3
 INSERT INTO Quartos (numQuarto, idHotel, idTipoQuarto, andar) VALUES
-	(999, 1, 1, 2),
-	(999, 1, 1, 3),
+	(1, 1, 1, 2),
+	(2, 1, 1, 3),
 	(3, 1, 2, 2),
 	(4, 1, 2, 3),
 	(5, 1, 3, 2),

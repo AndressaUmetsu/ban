@@ -44,7 +44,7 @@ CREATE TABLE TipoServicos
 	PRIMARY KEY (idTipoServico)
 );
 
--- Quarto (#numQuarto, localizacao, &idTipoQuarto, #&idHotel)
+-- Quarto (#numQuarto, &idTipoQuarto, #&idHotel, andar)
 CREATE TABLE Quartos
 (
 	numQuarto int,

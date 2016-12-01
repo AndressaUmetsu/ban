@@ -13,40 +13,40 @@
 
   <div class="field">
     <%= f.label :dataReserva %>
-    <%= f.date_select :dataReserva %>
+    <%= f.date_select :dataReserva, class: 'form-control'  %>
   </div>
 
   <div class="field">
     <%= f.label :dataCheckIn %>
-    <%= f.date_select :dataCheckIn %>
+    <%= f.date_select :dataCheckIn, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :dataCheckOut %>
-    <%= f.date_select :dataCheckOut %>
+    <%= f.date_select :dataCheckOut, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :ValorEntrada %>
-    <%= f.text_field :ValorEntrada %>
+    <%= f.text_field :ValorEntrada, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :Cliente_id %>
-    <%= f.text_field :Cliente_id %>
+    <%= f.label :cliente_id %>
+    <%= f.text_field :cliente_id, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :Quarto_id %>
-    <%= f.text_field :Quarto_id %>
+    <%= f.label :quarto_id %>
+    <%= f.text_field :quarto_id, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :Hotel_id %>
-    <%= f.text_field :Hotel_id %>
+    <%= f.label :hotel_id %>
+    <%= f.text_field :hotel_id, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

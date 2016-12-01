@@ -1,5 +1,5 @@
 class Reserva < ApplicationRecord
-  belongs_to :Cliente
-  belongs_to :Quarto
-  belongs_to :Hotel
+  belongs_to :cliente
+  belongs_to :quarto
+  belongs_to :hotel
 end

@@ -1,1 +1,1 @@
-json.partial! "estadias/estadias", estadias: @estadias
+json.partial! "estadias/estadia", estadia: @estadia

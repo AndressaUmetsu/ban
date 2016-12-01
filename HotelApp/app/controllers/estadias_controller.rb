@@ -1,5 +1,5 @@
 class EstadiasController < ApplicationController
-  before_action :set_estadias, only: [:show, :edit, :update, :destroy]
+  before_action :set_estadia, only: [:show, :edit, :update, :destroy]
 
   # GET /estadias
   # GET /estadias.json
@@ -14,7 +14,7 @@ class EstadiasController < ApplicationController
 
   # GET /estadias/new
   def new
-    @estadias = Estadia.new
+    @estadia = Estadia.new
   end
 
   # GET /estadias/1/edit
@@ -24,15 +24,15 @@ class EstadiasController < ApplicationController
   # POST /estadias
   # POST /estadias.json
   def create
-    @estadias = Estadia.new(estadias_params)
+    @estadia = Estadia.new(estadia_params)
 
     respond_to do |format|
-      if @estadias.save
-        format.html { redirect_to @estadias, notice: 'Estadia was successfully created.' }
-        format.json { render :show, status: :created, location: @estadias }
+      if @estadia.save
+        format.html { redirect_to @estadia, notice: 'Estadia was successfully created.' }
+        format.json { render :show, status: :created, location: @estadia }
       else
         format.html { render :new }
-        format.json { render json: @estadias.errors, status: :unprocessable_entity }
+        format.json { render json: @estadia.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +41,12 @@ class EstadiasController < ApplicationController
   # PATCH/PUT /estadias/1.json
   def update
     respond_to do |format|
-      if @estadias.update(estadias_params)
-        format.html { redirect_to @estadias, notice: 'Estadia was successfully updated.' }
-        format.json { render :show, status: :ok, location: @estadias }
+      if @estadia.update(estadia_params)
+        format.html { redirect_to @estadia, notice: 'Estadia was successfully updated.' }
+        format.json { render :show, status: :ok, location: @estadia }
       else
         format.html { render :edit }
-        format.json { render json: @estadias.errors, status: :unprocessable_entity }
+        format.json { render json: @estadia.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +54,7 @@ class EstadiasController < ApplicationController
   # DELETE /estadias/1
   # DELETE /estadias/1.json
   def destroy
-    @estadias.destroy
+    @estadia.destroy
     respond_to do |format|
       format.html { redirect_to estadias_url, notice: 'Estadia was successfully destroyed.' }
       format.json { head :no_content }
@@ -63,12 +63,12 @@ class EstadiasController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_estadias
-      @estadias = Estadia.find(params[:id])
+    def set_estadia
+      @estadia = Estadia.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def estadias_params
-      params.require(:estadias).permit(:dataCheckIn, :dataCheckOut, :cliente_id, :quarto_id, :hotel_id)
+    def estadia_params
+      params.require(:estadia).permit(:dataCheckIn, :dataCheckOut, :cliente_id, :quarto_id, :hotel_id)
     end
 end

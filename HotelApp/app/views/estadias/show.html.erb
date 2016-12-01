@@ -2,28 +2,28 @@
 
 <p>
   <strong>Datacheckin:</strong>
-  <%= @estadias.dataCheckIn %>
+  <%= @estadia.dataCheckIn %>
 </p>
 
 <p>
   <strong>Datacheckout:</strong>
-  <%= @estadias.dataCheckOut %>
+  <%= @estadia.dataCheckOut %>
 </p>
 
 <p>
   <strong>Cliente:</strong>
-  <%= @estadias.cliente %>
+  <%= @estadia.cliente.id %>
 </p>
 
 <p>
   <strong>Quarto:</strong>
-  <%= @estadias.quarto %>
+  <%= @estadia.quarto.id %>
 </p>
 
 <p>
   <strong>Hotel:</strong>
-  <%= @estadias.hotel %>
+  <%= @estadia.hotel.id %>
 </p>
 
-<%= link_to 'Edit', edit_estadias_path(@estadias) %> |
+<%= link_to 'Edit', edit_estadia_path(@estadia) %> |
 <%= link_to 'Back', estadias_path %>

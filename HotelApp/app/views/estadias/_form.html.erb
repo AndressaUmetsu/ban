@@ -1,10 +1,10 @@
-<%= form_for(estadias) do |f| %>
-  <% if estadias.errors.any? %>
+<%= form_for(estadia) do |f| %>
+  <% if estadia.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(estadias.errors.count, "error") %> prohibited this estadias from being saved:</h2>
+      <h2><%= pluralize(estadia.errors.count, "error") %> prohibited this estadias from being saved:</h2>
 
       <ul>
-      <% estadias.errors.full_messages.each do |message| %>
+      <% estadia.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,30 +13,30 @@
 
   <div class="field">
     <%= f.label :dataCheckIn %>
-    <%= f.date_select :dataCheckIn %>
+    <%= f.date_select :dataCheckIn, class: 'form-control'  %>
   </div>
 
   <div class="field">
     <%= f.label :dataCheckOut %>
-    <%= f.date_select :dataCheckOut %>
+    <%= f.date_select :dataCheckOut, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :cliente_id %>
-    <%= f.text_field :cliente_id %>
+    <%= f.text_field :cliente_id, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :quarto_id %>
-    <%= f.text_field :quarto_id %>
+    <%= f.text_field :quarto_id, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :hotel_id %>
-    <%= f.text_field :hotel_id %>
+    <%= f.text_field :hotel_id, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

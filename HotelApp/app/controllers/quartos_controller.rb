@@ -74,7 +74,7 @@ class QuartosController < ApplicationController
     end
 
     def invalid_foreign_key
-      flash[:error] = "Hotel inválido"
+      flash[:error] = "Hotel ou tipo inválido"
       render 'new'
     end
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dataCheckIn: 2016-12-01
+  dataCheckOut: 2016-12-01
+  cliente: one
+  quarto: one
+  hotel: one
+
+two:
+  dataCheckIn: 2016-12-01
+  dataCheckOut: 2016-12-01
+  cliente: two
+  quarto: two
+  hotel: two

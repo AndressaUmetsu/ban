@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datareserva:</strong>
+  <%= @reserva.dataReserva %>
+</p>
+
+<p>
+  <strong>Datacheckin:</strong>
+  <%= @reserva.dataCheckIn %>
+</p>
+
+<p>
+  <strong>Datacheckout:</strong>
+  <%= @reserva.dataCheckOut %>
+</p>
+
+<p>
+  <strong>Valorentrada:</strong>
+  <%= @reserva.ValorEntrada %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @reserva.Cliente %>
+</p>
+
+<p>
+  <strong>Quarto:</strong>
+  <%= @reserva.Quarto %>
+</p>
+
+<p>
+  <strong>Hotel:</strong>
+  <%= @reserva.Hotel %>
+</p>
+
+<%= link_to 'Edit', edit_reserva_path(@reserva) %> |
+<%= link_to 'Back', reservas_path %>

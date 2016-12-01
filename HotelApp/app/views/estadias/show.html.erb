@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datacheckin:</strong>
+  <%= @estadias.dataCheckIn %>
+</p>
+
+<p>
+  <strong>Datacheckout:</strong>
+  <%= @estadias.dataCheckOut %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @estadias.cliente %>
+</p>
+
+<p>
+  <strong>Quarto:</strong>
+  <%= @estadias.quarto %>
+</p>
+
+<p>
+  <strong>Hotel:</strong>
+  <%= @estadias.hotel %>
+</p>
+
+<%= link_to 'Edit', edit_estadias_path(@estadias) %> |
+<%= link_to 'Back', estadias_path %>

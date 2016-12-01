@@ -2,7 +2,7 @@
 
 <h1>Quartos</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Num</th>
@@ -17,7 +17,7 @@
     <% @quartos.each do |quarto| %>
       <tr>
         <td><%= quarto.num %></td>
-        <td><%= quarto.hotel_id %></td>
+        <td><%= Hotel.find(quarto.hotel_id).nome %></td>
         <td><%= quarto.andar %></td>
         <td><%= quarto.tipo_quarto_id %></td>
         <td><%= link_to 'Show', quarto %></td>

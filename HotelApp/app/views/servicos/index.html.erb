@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Servicos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datacheckin</th>
+      <th>Data</th>
+      <th>Hora</th>
+      <th>Tiposervico</th>
+      <th>Estadia</th>
+      <th>Quarto</th>
+      <th>Hotel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servicos.each do |servico| %>
+      <tr>
+        <td><%= servico.dataCheckIn %></td>
+        <td><%= servico.data %></td>
+        <td><%= servico.hora %></td>
+        <td><%= servico.TipoServico %></td>
+        <td><%= servico.Estadia %></td>
+        <td><%= servico.Quarto %></td>
+        <td><%= servico.Hotel %></td>
+        <td><%= link_to 'Show', servico %></td>
+        <td><%= link_to 'Edit', edit_servico_path(servico) %></td>
+        <td><%= link_to 'Destroy', servico, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Servico', new_servico_path %>

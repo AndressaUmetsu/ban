@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :data %>
-    <%= f.date_select :data %>
+    <%= f.date_select :data, class: 'form-control'  %>
   </div>
 
   <div class="field">
     <%= f.label :hora %>
-    <%= f.time_select :hora %>
+    <%= f.time_select :hora, class: 'form-control'  %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary'  %>
   </div>
 <% end %>

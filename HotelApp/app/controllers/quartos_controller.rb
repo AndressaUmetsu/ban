@@ -1,5 +1,6 @@
 class QuartosController < ApplicationController
   before_action :set_quarto, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::InvalidForeignKey, :with => :invalid_foreign_key
 
   # GET /quartos
   # GET /quartos.json
@@ -71,4 +72,10 @@ class QuartosController < ApplicationController
     def quarto_params
       params.require(:quarto).permit(:num, :andar, :hotel_id, :tipo_quarto_id)
     end
+
+    def invalid_foreign_key
+      flash[:error] = "Hotel inválido"
+      render 'new'
+    end
+
 end

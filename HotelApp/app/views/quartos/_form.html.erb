@@ -1,7 +1,9 @@
 <%= form_for(quarto) do |f| %>
   <% if quarto.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(quarto.errors.count, "error") %> prohibited this quarto from being saved:</h2>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(quarto.errors.count, "error") %> prohibited this quarto from being saved:</h2>
+      </div>
 
       <ul>
       <% quarto.errors.full_messages.each do |message| %>
@@ -13,25 +15,25 @@
 
   <div class="field">
     <%= f.label :num %>
-    <%= f.number_field :num %>
+    <%= f.number_field :num, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :hotel_id %>
-    <%= f.number_field :hotel_id %>
+    <%= f.number_field :hotel_id, class: 'form-control'  %>
   </div>
 
   <div class="field">
     <%= f.label :andar %>
-    <%= f.number_field :andar %>
+    <%= f.number_field :andar, class: 'form-control'  %>
   </div>
 
   <div class="field">
     <%= f.label :tipo_quarto_id %>
-    <%= f.number_field :tipo_quarto_id %>
+    <%= f.number_field :tipo_quarto_id, class: 'form-control'  %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"  %>
   </div>
 <% end %>

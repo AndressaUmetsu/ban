@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :clientes
   resources :hotels
   resources :tipo_quartos
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :reservas
+  resources :servicos
+  resources :estadias
 end

@@ -1,0 +1,42 @@
+<%= form_for(estadias) do |f| %>
+  <% if estadias.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estadias.errors.count, "error") %> prohibited this estadias from being saved:</h2>
+
+      <ul>
+      <% estadias.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :dataCheckIn %>
+    <%= f.date_select :dataCheckIn %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dataCheckOut %>
+    <%= f.date_select :dataCheckOut %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cliente_id %>
+    <%= f.text_field :cliente_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quarto_id %>
+    <%= f.text_field :quarto_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hotel_id %>
+    <%= f.text_field :hotel_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

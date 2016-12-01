@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dataReserva: 2016-12-01
+  dataCheckIn: 2016-12-01
+  dataCheckOut: 2016-12-01
+  ValorEntrada: 9.99
+  Cliente: one
+  Quarto: one
+  Hotel: one
+
+two:
+  dataReserva: 2016-12-01
+  dataCheckIn: 2016-12-01
+  dataCheckOut: 2016-12-01
+  ValorEntrada: 9.99
+  Cliente: two
+  Quarto: two
+  Hotel: two

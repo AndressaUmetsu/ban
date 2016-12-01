@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Datacheckin:</strong>
+  <%= @servico.dataCheckIn %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @servico.data %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @servico.hora %>
+</p>
+
+<p>
+  <strong>Tiposervico:</strong>
+  <%= @servico.TipoServico %>
+</p>
+
+<p>
+  <strong>Estadia:</strong>
+  <%= @servico.Estadia %>
+</p>
+
+<p>
+  <strong>Quarto:</strong>
+  <%= @servico.Quarto %>
+</p>
+
+<p>
+  <strong>Hotel:</strong>
+  <%= @servico.Hotel %>
+</p>
+
+<%= link_to 'Edit', edit_servico_path(@servico) %> |
+<%= link_to 'Back', servicos_path %>

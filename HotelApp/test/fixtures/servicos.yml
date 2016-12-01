@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dataCheckIn: 2016-12-01
+  data: 2016-12-01
+  hora: 2016-12-01 09:29:29
+  TipoServico: one
+  Estadia: one
+  Quarto: one
+  Hotel: one
+
+two:
+  dataCheckIn: 2016-12-01
+  data: 2016-12-01
+  hora: 2016-12-01 09:29:29
+  TipoServico: two
+  Estadia: two
+  Quarto: two
+  Hotel: two

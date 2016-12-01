@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Estadias</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Datacheckin</th>
+      <th>Datacheckout</th>
+      <th>Cliente</th>
+      <th>Quarto</th>
+      <th>Hotel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estadias.each do |estadias| %>
+      <tr>
+        <td><%= estadias.dataCheckIn %></td>
+        <td><%= estadias.dataCheckOut %></td>
+        <td><%= estadias.cliente %></td>
+        <td><%= estadias.quarto %></td>
+        <td><%= estadias.hotel %></td>
+        <td><%= link_to 'Show', estadias %></td>
+        <td><%= link_to 'Edit', edit_estadia_path(estadias) %></td>
+        <td><%= link_to 'Destroy', estadias, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estadias', new_estadia_path %>

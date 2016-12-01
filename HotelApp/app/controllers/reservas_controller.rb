@@ -25,9 +25,6 @@ class ReservasController < ApplicationController
   # POST /reservas.json
   def create
     @reserva = Reserva.new(reserva_params)
-    @reserva.cliente = Cliente.find(reserva_params[:cliente_id])
-    @reserva.cliente = Cliente.find(reserva_params[:cliente_id])
-    @reserva.cliente = Cliente.find(reserva_params[:cliente_id])
 
     respond_to do |format|
       if @reserva.save
@@ -72,6 +69,6 @@ class ReservasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reserva_params
-      params.require(:reserva).permit(:dataReserva, :dataCheckIn, :dataCheckOut, :ValorEntrada, :cliente_id, :quarto_id, :hotel_id)
+      params.require(:reserva).permit(:data_reserva, :data_checkin, :data_checkout, :valor_entrada, :cliente_id, :quarto_id, :hotel_id)
     end
 end

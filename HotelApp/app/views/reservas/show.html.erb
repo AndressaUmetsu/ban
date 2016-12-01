@@ -2,37 +2,37 @@
 
 <p>
   <strong>Datareserva:</strong>
-  <%= @reserva.dataReserva %>
+  <%= @reserva.data_reserva %>
 </p>
 
 <p>
   <strong>Datacheckin:</strong>
-  <%= @reserva.dataCheckIn %>
+  <%= @reserva.data_checkin %>
 </p>
 
 <p>
   <strong>Datacheckout:</strong>
-  <%= @reserva.dataCheckOut %>
+  <%= @reserva.data_checkout %>
 </p>
 
 <p>
   <strong>Valorentrada:</strong>
-  <%= @reserva.ValorEntrada %>
+  <%= @reserva.valor_entrada %>
 </p>
 
 <p>
   <strong>Cliente:</strong>
-  <%= @reserva.Cliente %>
+  <%= @reserva.cliente.id %>
 </p>
 
 <p>
   <strong>Quarto:</strong>
-  <%= @reserva.Quarto %>
+  <%= @reserva.quarto.id %>
 </p>
 
 <p>
   <strong>Hotel:</strong>
-  <%= @reserva.Hotel %>
+  <%= @reserva.hotel.id %>
 </p>
 
 <%= link_to 'Edit', edit_reserva_path(@reserva) %> |

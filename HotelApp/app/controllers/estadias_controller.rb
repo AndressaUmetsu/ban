@@ -69,6 +69,6 @@ class EstadiasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estadia_params
-      params.require(:estadia).permit(:dataCheckIn, :dataCheckOut, :cliente_id, :quarto_id, :hotel_id)
+      params.require(:estadia).permit(:data_checkin, :data_checkout, :cliente_id, :quarto_id, :hotel_id)
     end
 end

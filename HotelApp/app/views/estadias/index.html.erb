@@ -5,8 +5,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Datacheckin</th>
-      <th>Datacheckout</th>
+      <th>Data check-in</th>
+      <th>Data check-out</th>
       <th>Cliente</th>
       <th>Quarto</th>
       <th>Hotel</th>
@@ -17,8 +17,8 @@
   <tbody>
     <% @estadias.each do |estadia| %>
       <tr>
-        <td><%= estadia.dataCheckIn %></td>
-        <td><%= estadia.dataCheckOut %></td>
+        <td><%= estadia.data_checkin %></td>
+        <td><%= estadia.data_checkout %></td>
         <td><%= estadia.cliente.id %></td>
         <td><%= estadia.quarto.id %></td>
         <td><%= estadia.hotel.id %></td>

@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 20161201112922) do
   end
 
   create_table "estadias", force: :cascade do |t|
-    t.date     "dataCheckIn",  null: false
-    t.date     "dataCheckOut", null: false
-    t.integer  "cliente_id",   null: false
-    t.integer  "quarto_id",    null: false
-    t.integer  "hotel_id",     null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.date     "data_checkin",  null: false
+    t.date     "data_checkout", null: false
+    t.integer  "cliente_id",    null: false
+    t.integer  "quarto_id",     null: false
+    t.integer  "hotel_id",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["cliente_id"], name: "index_estadias_on_cliente_id", using: :btree
     t.index ["hotel_id"], name: "index_estadias_on_hotel_id", using: :btree
     t.index ["quarto_id"], name: "index_estadias_on_quarto_id", using: :btree
@@ -69,15 +69,15 @@ ActiveRecord::Schema.define(version: 20161201112922) do
   end
 
   create_table "reservas", force: :cascade do |t|
-    t.date     "dataReserva",  null: false
-    t.date     "dataCheckIn",  null: false
-    t.date     "dataCheckOut", null: false
-    t.decimal  "ValorEntrada", null: false
-    t.integer  "quarto_id",    null: false
-    t.integer  "hotel_id",     null: false
-    t.integer  "cliente_id",   null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.date     "data_reserva",  null: false
+    t.date     "data_checkin",  null: false
+    t.date     "data_checkout", null: false
+    t.decimal  "valor_entrada", null: false
+    t.integer  "quarto_id",     null: false
+    t.integer  "hotel_id",      null: false
+    t.integer  "cliente_id",    null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["cliente_id"], name: "index_reservas_on_cliente_id", using: :btree
     t.index ["hotel_id"], name: "index_reservas_on_hotel_id", using: :btree
     t.index ["quarto_id"], name: "index_reservas_on_quarto_id", using: :btree

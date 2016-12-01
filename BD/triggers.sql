@@ -4,10 +4,10 @@ CREATE OR REPLACE FUNCTION verificaQuartoLivre_Reserva() RETURNS trigger AS
 $$
 	DECLARE VidCliente INT;
 	BEGIN
-		IF (SELECT 1 FROM estadias e WHERE e.numQuarto = new.numQuarto AND new.dataCheckIn BETWEEN e.dataCheckIn AND e.dataCheckOut) THEN
+		IF (SELECT 1 FROM estadias e WHERE e.quarto_id = new.quarto_id AND new.dataCheckIn BETWEEN e.dataCheckIn AND e.dataCheckOut) THEN
 			RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
 		ELSE
-			IF (SELECT 1 FROM reservas r WHERE r.numQuarto = new.numQuarto AND new.dataCheckIn BETWEEN r.dataCheckIn AND r.dataCheckOut) THEN
+			IF (SELECT 1 FROM reservas r WHERE r.quarto_id = new.quarto_id AND new.dataCheckIn BETWEEN r.dataCheckIn AND r.dataCheckOut) THEN
 				RAISE EXCEPTION 'Já existe uma reserva nesse quarto';
 			END IF;
 		END IF;
@@ -22,26 +22,26 @@ FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Reserva();
 
 -- Estadia
 
-CREATE OR REPLACE FUNCTION verificaQuartoLivre_Estadia() RETURNS trigger AS
-$$
-	DECLARE VidCliente INT;
-	BEGIN
-		IF (SELECT 1 FROM estadias e WHERE e.idQuarto = new.idQuarto AND new.dataCheckIn BETWEEN e.dataCheckIn AND e.dataCheckOut) THEN
-			RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
-		ELSE
-			SELECT r.idCliente INTO VidCliente FROM reservas r WHERE r.idQuarto = new.idQuarto AND r.dataCheckIn = new.dataCheckIn;
-			IF (VidCliente != new.idCliente) THEN
-				RAISE EXCEPTION 'Quarto reservado para outro cliente';
-			END IF;
-		END IF;
-		RETURN new;
-	END;
-$$
-LANGUAGE plpgsql;
-
-CREATE TRIGGER QuartoParaEstadia
-BEFORE INSERT OR UPDATE ON estadias
-FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Estadia();
+-- CREATE OR REPLACE FUNCTION verificaQuartoLivre_Estadia() RETURNS trigger AS
+-- $$
+-- 	DECLARE VidCliente INT;
+-- 	BEGIN
+-- 		IF (SELECT 1 FROM estadias e WHERE e.quarto_id = new.quarto_id AND new.dataCheckIn BETWEEN e.dataCheckIn AND e.dataCheckOut) THEN
+-- 			RAISE EXCEPTION 'Já existe uma estadia nesse quarto';
+-- 		ELSE
+-- 			SELECT r.cliente_id INTO VidCliente FROM reservas r WHERE r.quarto_id = new.quarto_id AND r.dataCheckIn = new.dataCheckIn;
+-- 			IF (VidCliente != new.cliente_id) THEN
+-- 				RAISE EXCEPTION 'Quarto reservado para outro cliente';
+-- 			END IF;
+-- 		END IF;
+-- 		RETURN new;
+-- 	END;
+-- $$
+-- LANGUAGE plpgsql;
+--
+-- CREATE TRIGGER QuartoParaEstadia
+-- BEFORE INSERT OR UPDATE ON estadias
+-- FOR EACH ROW EXECUTE PROCEDURE verificaQuartoLivre_Estadia();
 
 
 -- Verificar se o text pode ser convertido para numeric

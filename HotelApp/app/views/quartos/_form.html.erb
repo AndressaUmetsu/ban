@@ -1,0 +1,37 @@
+<%= form_for(quarto) do |f| %>
+  <% if quarto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quarto.errors.count, "error") %> prohibited this quarto from being saved:</h2>
+
+      <ul>
+      <% quarto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :num %>
+    <%= f.number_field :num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hotel_id %>
+    <%= f.number_field :hotel_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :andar %>
+    <%= f.number_field :andar %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo_quarto_id %>
+    <%= f.number_field :tipo_quarto_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

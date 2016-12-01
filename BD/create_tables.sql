@@ -1,126 +1,138 @@
 -- TipoQuarto (#idTipoQuarto, preco, nome)
-CREATE TABLE TipoQuartos
+CREATE TABLE Tipo_Quartos
 (
-	idTipoQuarto serial,
+	id serial,
 	nome varchar(16),
 	preco real,
-	PRIMARY KEY (idTipoQuarto)
+	PRIMARY KEY (id)
 );
 
 -- Hotel (#idHotel, nome, endereco, telefone)
 CREATE TABLE Hotels
 (
-	idHotel serial,
+	id serial,
 	nome varchar(20),
 	endereco varchar(40),
 	telefone varchar(12),
-	PRIMARY KEY (idHotel)
+	PRIMARY KEY (id)
 );
 
 -- Cliente (#idCliente, nome, endereco, telefone)
 CREATE TABLE Clientes
 (
-	idCliente serial,
+	id serial,
 	nome varchar(20),
 	endereco varchar(20),
 	telefone varchar(12),
-	PRIMARY KEY (idCliente)
+	PRIMARY KEY (id)
 );
 
 -- Empregado (#idEmpregado, nome)
 CREATE TABLE Empregados
 (
-	idEmpregado serial,
+	id serial,
 	nome varchar(20),
-	PRIMARY KEY (idEmpregado)
+	PRIMARY KEY (id)
 );
 
 -- TipoServico (#idTipoServico, custo, nome)
-CREATE TABLE TipoServicos
+CREATE TABLE Tipo_Servicos
 (
-	idTipoServico serial,
+	id serial,
 	nome varchar(16),
 	custo real,
-	PRIMARY KEY (idTipoServico)
+	PRIMARY KEY (id)
 );
 
 -- Quarto (#numQuarto, &idTipoQuarto, #&idHotel, andar)
 CREATE TABLE Quartos
 (
+	id serial,
 	numQuarto int,
 	idHotel int,
 	idTipoQuarto int,
 	andar int,
-	PRIMARY KEY (numQuarto, idHotel),
-	FOREIGN KEY (idHotel) REFERENCES Hotels (idHotel)
+	PRIMARY KEY (id),
+	FOREIGN KEY (idHotel) REFERENCES Hotels (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (idTipoQuarto) REFERENCES TipoQuartos (idTipoQuarto)
+	FOREIGN KEY (idTipoQuarto) REFERENCES TipoQuartos (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Limpeza (#&numQuarto, #&idHotel, #data, #hora, &idEmpregado)
 CREATE TABLE Limpezas
 (
-	numQuarto int,
+	id serial,
+	idQuarto int,
 	idHotel int,
 	data date,
 	hora time,
 	idEmpregado int,
-	PRIMARY KEY (numQuarto, idHotel, data, hora),
-	FOREIGN KEY (idHotel) REFERENCES Hotels (idHotel)
+	PRIMARY KEY (id),
+	FOREIGN KEY (idHotel) REFERENCES Hotels (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (numQuarto, idHotel) REFERENCES Quartos (numQuarto, idHotel)
+	FOREIGN KEY (idQuarto) REFERENCES Quartos (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (idEmpregado) REFERENCES Empregados (idEmpregado)
+	FOREIGN KEY (idEmpregado) REFERENCES Empregados (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Estadia (&idCliente, #&numQuarto, #&idHotel, #dataCheckIn, dataCheckOut)
 CREATE TABLE Estadias
 (
+	id serial,
 	idCliente int,
-	numQuarto int,
+	idQuarto int,
 	idHotel int,
 	dataCheckIn date,
 	dataCheckOut date,
-	PRIMARY KEY (numQuarto, idHotel, dataCheckIn),
-	FOREIGN KEY (idCliente) REFERENCES Clientes (idCliente)
+	PRIMARY KEY (id),
+	FOREIGN KEY (idCliente) REFERENCES Clientes (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (numQuarto, idHotel) REFERENCES Quartos (numQuarto, idHotel)
+	FOREIGN KEY (idQuarto) REFERENCES Quartos (id)
+		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idHotel) REFERENCES Hotels (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Servico (idServico, &idTipoServico, &idCliente, &numQuarto, &idHotel, &dataCheckIn, data, hora)
 CREATE TABLE Servicos
 (
-	idServico serial,
+	id serial,
 	idTipoServico int,
-	idCliente int,
-	numQuarto int,
+	idEstadia int,
+	idQuarto int,
 	idHotel int,
 	dataCheckIn date,
 	data date,
 	hora time,
-	PRIMARY KEY (idServico),
-	FOREIGN KEY (idTipoServico) REFERENCES TipoServicos (idTipoServico)
+	PRIMARY KEY (id),
+	FOREIGN KEY (idTipoServico) REFERENCES TipoServicos (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (numQuarto, idHotel, dataCheckIn) REFERENCES Estadias (numQuarto, idHotel, dataCheckIn)
+	FOREIGN KEY (idEstadia) REFERENCES Estadias (id)
+		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idQuarto) REFERENCES Quartos (id)
+		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idHotel) REFERENCES Hotels (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 -- Reserva (&idCliente, #&numQuarto, #&idHotel, #dataReserva, dataCheckIn, dataCheckOut, valorEntrada )
 CREATE TABLE Reservas
 (
+	id serial,
 	idCliente int,
-	numQuarto int,
+	idQuarto int,
 	idHotel int,
 	dataReserva date,
 	dataCheckIn date,
 	dataCheckOut date,
 	valorEntrada real,
-	PRIMARY KEY (numQuarto, idHotel, dataReserva),
-	FOREIGN KEY (idCliente) REFERENCES Clientes (idCliente)
+	PRIMARY KEY (id),
+	FOREIGN KEY (idCliente) REFERENCES Clientes (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (numQuarto, idHotel) REFERENCES Quartos (numQuarto, idHotel)
+	FOREIGN KEY (idQuarto) REFERENCES Quartos (id)
+		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (idHotel) REFERENCES Hotels (id)
 		MATCH SIMPLE ON UPDATE CASCADE ON DELETE CASCADE
 );

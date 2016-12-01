@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @limpeza.data %>
+</p>
+
+<p>
+  <strong>Hora:</strong>
+  <%= @limpeza.hora %>
+</p>
+
+<%= link_to 'Edit', edit_limpeza_path(@limpeza) %> |
+<%= link_to 'Back', limpezas_path %>

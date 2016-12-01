@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Limpezas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Hora</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @limpezas.each do |limpeza| %>
+      <tr>
+        <td><%= limpeza.data %></td>
+        <td><%= limpeza.hora %></td>
+        <td><%= link_to 'Show', limpeza %></td>
+        <td><%= link_to 'Edit', edit_limpeza_path(limpeza) %></td>
+        <td><%= link_to 'Destroy', limpeza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Limpeza', new_limpeza_path %>
